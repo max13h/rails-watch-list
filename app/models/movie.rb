@@ -12,7 +12,7 @@ class Movie < ApplicationRecord
   def check_presence
     if bookmarks.exists?
       errors.add(:base, message: "Cannot delete the movie because it is referenced in bookmarks.")
-      throw :abort
+      raise ActiveRecord::InvalidForeignKey
     end
   end
 end
