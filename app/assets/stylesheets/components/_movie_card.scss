@@ -26,9 +26,13 @@
   position: relative;
 }
 
-.card-text {
+.card-details {
   height: 0px;
   overflow: hidden;
+
+  div p {
+    color: rgb(95, 95, 95);
+  }
 }
 
 .overview-open {

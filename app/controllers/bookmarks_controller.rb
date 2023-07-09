@@ -16,6 +16,12 @@ class BookmarksController < ApplicationController
     end
   end
 
+  def destroy
+    @bookmark = Bookmark.where(movie: params[:movie], list: params[:list])
+    @bookmark[0].destroy
+    redirect_to list_path, status: :see_other
+  end
+
   private
 
   def bookmark_params

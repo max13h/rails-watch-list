@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   # get "lists/:id", to: "lists#show", as: "list"
   resources :lists, only: [:new, :create, :show, :destroy] do
     member do
-      resources :bookmarks, only: [:new, :create]
+      resources :bookmarks, only: [:new, :create, :destroy]
     end
   end
 end

@@ -7,7 +7,7 @@ class ListsController < ApplicationController
   end
 
   def show
-    @movies = @list.movies
+    @bookmarks = Bookmark.where(list: @list)
   end
 
   def new

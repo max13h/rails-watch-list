@@ -1,10 +1,21 @@
 <div class="card bg-primary" style="width: 18rem;">
+  <% movie = bookmark.movie %>
   <%= image_tag movie.poster_url, alt: "movie poster", class: "card-img-top"%>
   <div class="card-body" data-controller="movie-card">
     <div class="card-headers">
       <h5 class="card-title"><%= movie.title %></h5>
       <i class="fa-solid fa-chevron-down" title="overview"  data-action="click->movie-card#more"></i>
     </div>
-    <p class="card-text" data-movie-card-target="overview"><%= movie.overview %></p>
+    <div class="card-details" data-movie-card-target="overview">
+      <p><%= movie.overview %></p>
+      <div class="d-flex">
+        <% bookmark = Bookmark.where(list: list, movie: movie) %>
+        <p class="fst-italic flex-grow-1">Bookmark's note: <br><%= bookmark[0].comment %></p>
+
+        <%= link_to bookmark_path({movie: movie, list: list}), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this bookmark ?"}, class: "link-dark link-underline-opacity-0 me-3" do %>
+          <i class="fa-solid fa-trash fs-6"></i>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
