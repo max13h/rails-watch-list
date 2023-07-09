@@ -1,14 +1,20 @@
+<h1 class="my-4">Your lists</h1>
+
 
 <% if @lists.empty? %>
   <p class="fst-italic position-absolute top-50 start-50 translate-middle">No list yet</p>
 <% else %>
+  <div class="row g-5">
     <% @lists.each do |list|%>
-      <%= link_to list_path(list) do %>
-        <div class="movie">
-          <h2><%= list.name %></h2>
+      <div class="col-4">
+        <div class="d-flex justify-content-center align-items-center">
+          <%= link_to list_path(list), class: "d-block", style: "width: 18rem; height: 10rem;" do %>
+            <%= render "list_card", list: list %>
+          <% end %>
         </div>
-      <% end %>
+      </div>
     <% end %>
+  </div>
 <% end %>
   
 

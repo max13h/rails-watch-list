@@ -1,0 +1,8 @@
+<div class="container list-card">
+  <% if list.movies.empty? %>
+    <div class="list-card-image" style="background-color: black;"></div>
+  <% else %>
+    <%= image_tag list.movies[0].poster_url, alt: "poster_url", class: "list-card-image" %>
+  <% end %>
+  <h2 class="position-absolute top-50 start-50 translate-middle"><%= list.name %></h2>
+</div>

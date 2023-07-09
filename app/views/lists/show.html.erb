@@ -1,4 +1,15 @@
-<h1 class="my-4">You list: <strong><%= @list.name %></strong></h1>
+<div class="d-flex justify-content-between align-items-center">
+  <h1 class="my-4">You list: <strong><%= @list.name %></strong></h1>
+  <div>
+    <%= link_to new_bookmark_path(@list), class: "link-primary link-underline-opacity-0 me-3" do %>
+      <i class="fa-solid fa-bookmark fs-3"></i>
+    <% end %>
+    
+    <%= link_to list_path(@list), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to destroy this list ?"}, class: "link-primary link-underline-opacity-0 me-3" do %>
+      <i class="fa-solid fa-trash fs-3"></i>
+    <% end %>
+  </div>
+</div>
 
 <div class="row gy-5 justify-content-center">
   <% @movies.each do |movie| %>

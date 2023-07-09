@@ -1,0 +1,6 @@
+<h1 class="py-3">Create a new list</h1>
+
+<%= simple_form_for @list, url: lists_path do |f| %>
+  <%= f.input :name %>
+  <%= f.submit 'Create list', class: "btn btn-primary fw-bold" %>
+<% end %>
