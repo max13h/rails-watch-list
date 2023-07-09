@@ -11,6 +11,11 @@
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="bg-primary p-1">
+      <%= link_to "WatchList", root_path, class: "link-underline-opacity-0 link-dark fw-bold fs-3" %>
+    </nav>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

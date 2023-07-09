@@ -1,2 +1,14 @@
-<h1>Lists#index</h1>
-<p>Find me in app/views/lists/index.html.erb</p>
+
+<% if @lists.empty? %>
+  <p class="fst-italic position-absolute top-50 start-50 translate-middle">No list yet</p>
+<% else %>
+    <% @lists.each do |list|%>
+      <%= link_to list_path(list) do %>
+        <div class="movie">
+          <h2><%= list.name %></h2>
+        </div>
+      <% end %>
+    <% end %>
+<% end %>
+  
+
