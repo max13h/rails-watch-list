@@ -28,6 +28,18 @@ Movie.destroy_all
 puts "Database empty"
 puts ""
 
+puts "Creating lists..."
+puts ""
+
+list0 = List.create!(name: "See later")
+puts "List nb 1 created"
+list1 = List.create!(name: "Classic movies")
+puts "List nb 2 created"
+list2 = List.create!(name: "Superhero")
+puts "List nb 3 created"
+lists = [list0, list1, list2]
+
+
 puts "Creating movies..."
 puts ""
 
@@ -39,7 +51,7 @@ nb = 0
 20.times do 
   movie_tmdb = response["results"][nb]
   poster_url = "https://image.tmdb.org/t/p/w500#{movie_tmdb["poster_path"]}"
-  Movie.create!(
+  movie = Movie.create!(
     title: movie_tmdb["title"],
     overview: movie_tmdb["overview"],
     poster_url: poster_url,
@@ -48,6 +60,12 @@ nb = 0
 
   puts "Movie nb #{nb + 1} created"
   nb += 1
+
+  random = rand(3)
+
+  Bookmark.create!(comment: "This is a bookmark!", movie: movie, list: lists[random])
+  puts "Movie bookmarked to list #{random}"
+  puts ""
 end
 
 puts ""

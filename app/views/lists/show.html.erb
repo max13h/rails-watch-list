@@ -1,0 +1,6 @@
+<h1 class="mt-3">You list: <strong><%= @list.name %></strong></h1>
+
+
+<% @movies.each do |movie| %>
+  <%= render "card", movie: movie %>
+<% end %>
