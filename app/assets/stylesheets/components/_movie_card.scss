@@ -1,0 +1,36 @@
+.color-gray {
+  color: $gray
+}
+
+.card-headers {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  h5 {
+    flex-grow: 1;
+  }
+
+  .fa-chevron-down {
+    font-size: 1rem;
+    cursor: pointer;
+  }
+}
+
+.card-body {
+  font-size: 0.8rem;
+  display: block;
+  overflow: hidden;
+  color: $gray;
+  opacity: 0.9;
+  position: relative;
+}
+
+.card-text {
+  height: 0px;
+  overflow: hidden;
+}
+
+.overview-open {
+  height: auto;
+}
