@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-between align-items-center">
-  <h1 class="my-4">You list: <strong><%= @list.name %></strong></h1>
+  <h1 class="my-4">Your list: <strong><%= @list.name %></strong></h1>
   <div>    
     <%= link_to list_path(@list), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this list ?"}, class: "link-primary link-underline-opacity-0 me-3" do %>
       <i class="fa-solid fa-trash fs-3"></i>
@@ -9,20 +9,29 @@
 
 <div class="row gy-5 justify-content-center">
   <% @bookmarks.each do |bookmark| %>
-    <div class="col-3">
+    <div class="col-lg-3">
       <%= render "lists/card", bookmark: bookmark, list: @list %>
     </div>
   <% end %>
+  <div class="col-lg-3">
+    <%= simple_form_for @bookmark, url: bookmarks_path do |f| %>
+      <h2 class="my-4">Create a new bookmark to the list</h2>
+      <%= f.input :comment %>
+      <%= f.association :movie, input_html: { multiple: true, data: { controller: "tom-select" }, class: "bg-primary" } %>
+      <%= f.submit "Create bookmark", class: "btn btn-primary fw-bold" %>
+    <% end %>
+  </div>
 </div>
 
 <hr class="my-5">
 
-<h2 class="my-4" id="new-bookmark">Create a new bookmark your list</h2>
+<div class="row justify-content-between">
+  
 
-<div class="row justify-content-center">
-  <%= simple_form_for @bookmark, url: bookmarks_path, html: { class: "col-10" } do |f| %>
-    <%= f.input :comment %>
-    <%= f.association :movie, input_html: { multiple: true, data: { controller: "tom-select" }, class: "bg-primary" } %>
-    <%= f.submit "Create bookmark", class: "btn btn-primary fw-bold" %>
+  <%= simple_form_for @review, url: reviews_path, html: { class: "col-5" } do |f| %>
+    <h2 class="my-4">Send a review to this list</h2>
+    <%= f.input :content %>
+    <%= f.input :rating, collection: 1..5 %>
+    <%= f.submit "Submit review", class: "btn btn-primary fw-bold" %>
   <% end %>
 </div>

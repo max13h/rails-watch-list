@@ -9,6 +9,7 @@ class ListsController < ApplicationController
   def show
     @bookmarks = Bookmark.where(list: @list)
     @bookmark = Bookmark.new
+    @review = Review.new
   end
 
   def new
