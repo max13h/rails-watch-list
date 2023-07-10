@@ -7,9 +7,24 @@ class BookmarksController < ApplicationController
 
   def create
     @bookmarks = Bookmark.where(list: @list)
-    @bookmark = Bookmark.new(bookmark_params)
-    @bookmark.list = @list
-    if @bookmark.save
+
+    movies_list = params[:bookmark][:movie_id]
+    all_saved = true
+
+    movies_list.each do |movie_id|
+      @bookmark = Bookmark.new(bookmark_params)
+      next if movie_id.empty?
+
+      @bookmark.list = @list
+      @bookmark.movie = Movie.find(movie_id)
+      if @bookmark.save
+        next
+      else
+        all_saved = false
+      end
+    end
+
+    if all_saved
       redirect_to list_path(@list)
     else
       render "lists/show", status: :unprocessable_entity

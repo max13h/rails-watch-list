@@ -9,3 +9,6 @@ application.register("hello", HelloController)
 
 import MovieCardController from "./movie_card_controller"
 application.register("movie-card", MovieCardController)
+
+import TomSelectController from "./tom_select_controller"
+application.register("tom-select", TomSelectController)
