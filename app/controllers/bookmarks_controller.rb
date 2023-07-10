@@ -1,18 +1,18 @@
 class BookmarksController < ApplicationController
+  before_action :list_recover, only: [:new, :create]
+
   def new
     @bookmark = Bookmark.new
-    @list = List.find(params[:id])
   end
 
   def create
-
+    @bookmarks = Bookmark.where(list: @list)
     @bookmark = Bookmark.new(bookmark_params)
-    @list = List.find(params[:id])
     @bookmark.list = @list
     if @bookmark.save
       redirect_to list_path(@list)
     else
-      render :new, status: :unprocessable_entity
+      render "lists/show", status: :unprocessable_entity
     end
   end
 
@@ -23,6 +23,10 @@ class BookmarksController < ApplicationController
   end
 
   private
+
+  def list_recover
+    @list = List.find(params[:id])
+  end
 
   def bookmark_params
     params.require(:bookmark).permit(:comment, :movie_id)

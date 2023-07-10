@@ -8,6 +8,7 @@ class ListsController < ApplicationController
 
   def show
     @bookmarks = Bookmark.where(list: @list)
+    @bookmark = Bookmark.new
   end
 
   def new
@@ -17,7 +18,7 @@ class ListsController < ApplicationController
   def create
     @list = List.new(list_params)
     if @list.save
-      redirect_to root_path
+      redirect_to list_path(@list)
     else
       render :new, status: :unprocessable_entity
     end
