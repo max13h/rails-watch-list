@@ -26,9 +26,33 @@
 <hr class="my-5">
 
 <div class="row justify-content-between">
-  
+  <h2>Reviews</h2>
+  <div class="reviews col-md-8 position-relative">
+    <% if @reviews.empty? %>
+      <p class="position-absolute top-50 start-50 translate-middle">No review yet</p>
+    <% else %>
+      <% @reviews.each do |review| %>
+        <div class="p-3 mb-3">
+          <% star_count = review.rating.to_i %>
+          <% nostar_count = 5 - star_count %>
+          <div class="d-flex mb-2">
+            <% star_count.times do %>
+              <i class="fa-solid fa-star" style="color: #ffd700"></i>
+            <% end %>
+            <% nostar_count.times do %>
+              <i class="fa-regular fa-star" style="color: #ffd700"></i>
+            <% end %>
+          </div>
+          <%= review.content %>
+        </div>
+        <div class="row justify-content-center">
+            <hr class="col-md-8">
+          </div>
+      <% end %>
+    <% end %>
+  </div>
 
-  <%= simple_form_for @review, url: reviews_path, html: { class: "col-5" } do |f| %>
+  <%= simple_form_for @review, url: reviews_path, html: { class: "col-md-4" } do |f| %>
     <h2 class="my-4">Send a review to this list</h2>
     <%= f.input :content %>
     <%= f.input :rating, collection: 1..5 %>
