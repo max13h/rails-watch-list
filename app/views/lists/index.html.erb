@@ -6,7 +6,7 @@
 <% else %>
   <div class="row g-5">
     <% @lists.each do |list|%>
-      <div class="col-4">
+      <div class="col-lg-4">
         <div class="d-flex justify-content-center align-items-center">
           <%= link_to list_path(list), class: "d-block", style: "width: 18rem; height: 10rem;" do %>
             <%= render "list_card", list: list %>
