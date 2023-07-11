@@ -1,5 +1,6 @@
 require "json"
 require "open-uri"
+require "faker"
 
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
@@ -39,6 +40,22 @@ list2 = List.create!(name: "Superhero")
 puts "List nb 3 created"
 lists = [list0, list1, list2]
 
+puts "Creating reviews to lists..."
+puts ""
+list_nb = 1 
+lists.each do |list|
+  nb = 1
+  rand(4..10).times do
+    Review.create(
+      content: Faker::Lorem.paragraph(sentence_count: 1, supplemental: true, random_sentences_to_add: 5),
+      rating: rand(1..5),
+      list: list
+    )
+    puts "Creating review nb #{nb} to list #{list_nb}"
+    nb += 1
+  end
+  list_nb += 1
+end
 
 puts "Creating movies..."
 puts ""
