@@ -7,14 +7,14 @@
   </div>
 </div>
 
-<div class="row gy-5 justify-content-center">
+<div class="row gy-5 justify-content-center" data-controller="aos">
   <% @bookmarks.each do |bookmark| %>
     <div class="col-lg-3">
       <%= render "lists/card", bookmark: bookmark, list: @list %>
     </div>
   <% end %>
   <div class="col-lg-3">
-    <%= simple_form_for @bookmark, url: bookmarks_path do |f| %>
+    <%= simple_form_for @bookmark, url: bookmarks_path, data: {aos: "fade"} do |f| %>
       <h2 class="my-4">Create a new bookmark to the list</h2>
       <%= f.input :comment %>
       <%= f.association :movie, input_html: { multiple: true, data: { controller: "tom-select" }, class: "bg-primary" } %>
