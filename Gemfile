@@ -55,6 +55,9 @@ gem 'faker'
 gem "dotenv-rails", groups: [:development, :test]
 gem "cloudinary"
 
+# Active Storage validators
+gem 'activestorage-validator'
+
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

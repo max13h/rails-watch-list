@@ -32,11 +32,21 @@ puts ""
 puts "Creating lists..."
 puts ""
 
-list0 = List.create!(name: "See later")
+default_banner = Cloudinary::Utils.cloudinary_url("default_background_u8nfrj")
+
+list0 = List.new(name: "See later")
+list0.banner.attach(io: URI.open(default_banner), filename: "default_banner.jpg", content_type: "image/jpeg")
+list0.save!
 puts "List nb 1 created"
-list1 = List.create!(name: "Classic movies")
+list1 = List.new(name: "Classic movies")
+list1.banner.attach(io: URI.open(default_banner), filename: "default_banner.jpg", content_type: "image/jpeg")
+list1.save!
+
 puts "List nb 2 created"
-list2 = List.create!(name: "Superhero")
+list2 = List.new(name: "Superhero")
+list2.banner.attach(io: URI.open(default_banner), filename: "default_banner.jpg", content_type: "image/jpeg")
+list2.save!
+
 puts "List nb 3 created"
 lists = [list0, list1, list2]
 

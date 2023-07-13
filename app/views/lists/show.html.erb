@@ -1,13 +1,4 @@
-<div class="d-flex justify-content-between align-items-center">
-  <h1 class="my-4">Your list: <strong><%= @list.name %></strong></h1>
-  <div>    
-    <%= link_to list_path(@list), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this list ?"}, class: "link-primary link-underline-opacity-0 me-3" do %>
-      <i class="fa-solid fa-trash fs-3"></i>
-    <% end %>
-  </div>
-</div>
-
-<div class="row gy-5 justify-content-center" data-controller="aos">
+<div class="row gy-5 justify-content-center mt-3" data-controller="aos">
   <% @bookmarks.each do |bookmark| %>
     <div class="col-lg-3">
       <%= render "lists/card", bookmark: bookmark, list: @list %>

@@ -1,9 +1,4 @@
 <div class="container list-card">
-  <% if list.movies.empty? %>
-    <div class="list-card-image" style="background-color: black;"></div>
-  <% else %>
-    <% bookmarks = Bookmark.where(list: list) %>
-    <%= image_tag bookmarks[0].movie.poster_url, alt: "poster_url", class: "list-card-image" %>
-  <% end %>
+  <div class="list-card-image" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path list.banner.key, crop: :fill %>);"></div>
   <h2 class="position-absolute top-50 start-50 translate-middle"><%= list.name %></h2>
 </div>

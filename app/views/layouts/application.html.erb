@@ -20,6 +20,13 @@
         <% end %>
       </div>
     </nav>
+
+
+    <% if controller_name == 'lists' && action_name == 'show' %>
+        <%= render "banner", list: @list %>
+    <% end %>
+
+
     <div class="container">
       <%= yield %>
     </div>
