@@ -1,6 +1,6 @@
 :root {
   --gl-star-color: red;
   --gl-star-color-inactive: red;
-  --gl-star-empty: asset-url('images/star_rating/star_inactive.svg');
-  --gl-star-full: asset-url('images/star_rating/star_active.svg');
+  --gl-star-empty: asset-url('star_rating/star_inactive.svg');
+  --gl-star-full: asset-url('star_rating/star_active.svg');
 }
